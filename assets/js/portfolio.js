@@ -3,9 +3,10 @@
 const filterContainer = document.querySelector(".portfolio-filter-inner");
 const filterBtns = filterContainer.children;
 const totalFilterBtns = filterBtns.length;
-const tabs = document.querySelectorAll(".tab-content")
+const tabs = document.querySelectorAll(".tab-content");
 const container = document.querySelector(".scene");
-const portfolioItems = document.querySelectorAll(".project")
+const portfolioItems = document.querySelectorAll(".project");
+const modelLoader = document.querySelector(".model-loader")
 
 console.log(tabs)
 
@@ -60,6 +61,7 @@ let models = [
   "/3D/models/GoldenWheelSpider_Unity.gltf"
 ]
 
+var RESOURCES_LOADED = false;
 
 function init() {
     let camera;
@@ -137,6 +139,8 @@ function setMaterialsOnGLTF(object3D) {
 }
 
 function loadModel(index) {
+  modelLoader.style.display = 'grid';
+  RESOURCES_LOADED = false;
   let camera;
   let renderer;
   let scene;
@@ -184,8 +188,19 @@ controls.dampingFactor = 0.1;
 
 //   controls.enablePan = false;
 
+const loadingManager = new THREE.LoadingManager();
+
+loadingManager.onProgress = function(item, loaded, total){
+ // console.log(item, loaded, total);
+}
+
+loadingManager.onLoad = function(){
+  modelLoader.style.display = 'none';
+
+  RESOURCES_LOADED = true;
+}
 //Load model
-let loader = new THREE.GLTFLoader();
+let loader = new THREE.GLTFLoader(loadingManager);
 loader.load(models[index], function (gltf) {
   scene.add(gltf.scene);
   model = gltf.scene.children[0];

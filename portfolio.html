@@ -13,14 +13,17 @@
       href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
     />
 
-    <link rel="stylesheet" href="/3D/modelStyle.css" />
-
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="/assets/css/style.css" />
 
     <title>Mohazza</title>
   </head>
   <body>
+       <!--=============== LOADER ===============-->
+       <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+
     <!--=============== HEADER ===============-->
     <header class="header" id="header">
       <!-- nav -->
@@ -153,7 +156,12 @@
             </div>
             <!-- 3D Art -->
             <div class="tab-content row art">
-              <div class="scene"></div>
+              <div class="model-wrapper">
+                <div class="scene"></div>
+                <div class="model-loader">
+                  <div class="loader"></div>
+                </div>
+              </div>
               <div class="models row">
                 <!-- model item -->
                 <div class="model-item project padd-15" data-category="art">
@@ -284,10 +292,6 @@
               <h5 for="bg-1">Light</h5>
             </div>
             <div class="bg-2">
-              <span></span>
-              <h5 for="bg-2">Dim</h5>
-            </div>
-            <div class="bg-3">
               <span></span>
               <h5 for="bg-3">Dark</h5>
             </div>
