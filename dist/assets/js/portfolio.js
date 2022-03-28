@@ -6,8 +6,10 @@ const totalFilterBtns = filterBtns.length;
 const tabs = document.querySelectorAll(".tab-content");
 const container = document.querySelector(".scene");
 const portfolioItems = document.querySelectorAll(".project");
-const modelLoader = document.querySelector(".model-loader")
+const modelLoader = document.querySelector(".model-loader");
+const footer = document.querySelector(".footer");
 
+let canvasInitialized = false;
 console.log(tabs)
 
 for(let i=0; i<totalFilterBtns; i++)
@@ -28,16 +30,26 @@ for(let i=0; i<totalFilterBtns; i++)
                 portfolioItems[j].classList.add("show");
             }
         }
+        if(filterValue == "desktop" || filterValue == "web"){
+          footer.classList.add("fixed");
+        }
+        else{
+          footer.classList.remove("fixed");
+        }
 
         if(i == 2){
+            canvasInitialized = true;
             container.classList.add("active")
             init(0)
         }
         else{
             container.classList.remove("active")
-            container.removeChild(container.firstChild);
+            if (container.firstChild)
+              container.removeChild(container.firstChild);
 
         }
+
+     
         
     })
 }

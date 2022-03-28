@@ -18,11 +18,28 @@ const navMenu = document.getElementById("nav-menu");
 const navToggle = document.getElementById("nav-toggle");
 const navClose = document.getElementById("nav-close");
 /*=============== SHOW MENU ===============*/
-
+if(navToggle)
+{
+  navToggle.addEventListener("click", () => {
+    navMenu.classList.add("show-menu");
+  })
+}
 /*============== MENU HIDDEN ===============*/
-
+if(navClose)
+{
+  navClose.addEventListener("click", () => {
+    navMenu.classList.remove("show-menu");
+  })
+}
 /*=============== REMOVE MENU MOBILE ===============*/
+const navLinks = document.querySelectorAll(".nav-link");
 
+function linkAction(){
+  const navMenu = document.getElementById("nav-menu");
+  //hide menu after clicking on a menu item
+  navMenu.classList.remove("show-menu")
+}
+navLinks.forEach(n => n.addEventListener("click", linkAction));
 /*=============== CHANGE BACKGROUND HEADER ===============*/
 
 /*=============== TESTIMONIAL SWIPER ===============*/
