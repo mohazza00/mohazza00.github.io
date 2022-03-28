@@ -67,7 +67,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+/* html{
+  scroll-behavior: smooth;
+} */
 body,
 button,
 input,
@@ -339,6 +341,7 @@ p {
 }
 
 .home .intro img {
+  width: 200px;
   margin-bottom: var(--m-1-5);
 }
 .home .intro .social-icons {
@@ -441,6 +444,7 @@ p {
 .skill-item {
   flex: 0 0 25%;
   max-width: 25%;
+  margin-top: var(--m-1-5);
 }
 .skill-item.software {
   flex: 0 0 50%;
@@ -461,6 +465,9 @@ p {
 .portfolio {
   padding-top: 2.5rem;
   min-height: 100%;
+}
+.portfolio .container {
+  padding-bottom: 1rem;
 }
 .portfolio .portfolio-filter {
   flex: 0 0 100%;
@@ -525,10 +532,10 @@ p {
   display: flex;
   background-color: var(--color-white);
 }
-.model-wrapper{
+.model-wrapper {
   position: relative;
-  width: 40vw;
-  height: 50vh;
+  width: 100%;
+  height: 500px;
   border-radius: 5px;
   background-color: #f2f2f2;
   /* background-image: url("./BG.png"); */
@@ -542,7 +549,7 @@ p {
 .model-loader {
   height: 100%;
   width: 100%;
-  background-color:rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 2;
   display: none;
   place-items: center;
@@ -550,7 +557,6 @@ p {
   top: 0;
   left: 0;
   cursor: wait;
-
 }
 .model-loader .loader {
   border: 8px solid #f3f3f3;
@@ -564,8 +570,8 @@ p {
 .scene.active,
 canvas {
   position: relative;
-  width: 40vw;
-  height: 50vh;
+  width: 100%;
+  height: 100%;
   border: 1px solid rgb(151, 151, 151);
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -612,7 +618,7 @@ canvas {
 .portfolio-item .portfolio-item-inner {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   cursor: pointer;
 }
 .model-item .portfolio-item-inner {
@@ -696,7 +702,6 @@ canvas {
   transform: translateX(0);
 }
 
-
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
@@ -765,8 +770,8 @@ canvas {
 .skeleton-text {
   width: 100%;
   height: 1.5rem;
-  margin-bottom: 0.25rem;
-  border-radius: 0.125rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
 }
 .skeleton-text:last-child {
   margin-bottom: 0;
@@ -1125,6 +1130,150 @@ canvas {
 }
 /*========== Media Queries ==========*/
 @media only screen and (max-width: 1200px) {
+  .customize-theme .card {
+    width: 50vw;
+  }
+}
+@media only screen and (max-width: 968px) {
+  .home .container .intro {
+    padding-top: 1rem;
+  }
+
+  .about-content {
+    margin-left: 0px;
+  }
+  .about-img {
+    text-align: center;
+    margin-bottom: var(--m-2-5);
+  }
+  .skills {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+  .portfolio-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .model-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+  }
+  .video-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .video-item .inner {
+    background: var(--color-white);
+    overflow: hidden;
+    transform: translateY(0);
+    transition: 0.2s;
+    height: 300px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+  .skeleton {
+    opacity: 0.7;
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+
+  .skeleton-text {
+    width: 100%;
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 70%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+  .video-item .inner:hover {
+    transform: translateY(-0.98rem);
+  }
+  .container {
+    padding-bottom: 0px;
+    max-width: 680px;
+  }
+
+  .video-item .thumbnail {
+    position: relative;
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+  .video-item .inner {
+    height: 320px;
+  }
+  .video-item .thumbnail .image {
+    position: absolute;
+    top: -14%;
+    transform: scale(1);
+    transition: 0.3s;
+    height: 250px;
+    width: 100%;
+    clip: rect(30px, 500px, 220px, 0px);
+  }
+  .customize-theme .card {
+    width: 58vw;
+  }
+}
+@media only screen and (max-width: 768px) {
+  body {
+    margin: var(--header-height) 0 0 0;
+  }
+  .container {
+    max-width: 568px;
+  }
+  .portfolio .container,
+  .videos .container {
+    padding-top: 1rem;
+    padding-bottom: 0rem;
+  }
+  /* .nav{
+    height: var(--header-height);
+  } */
+  .nav-list {
+    flex-direction: column;
+    row-gap: 1.5rem;
+  }
+  .nav-menu {
+    position: fixed;
+    background-color: var(--color-white);
+    width: 70%;
+    height: 100%;
+    top: 0;
+    right: -100%;
+    padding: 4rem 0 0 3rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    border-radius: 1rem 0 0 1rem;
+    z-index: 100;
+    transition: 0.3s;
+  }
+  .show-menu {
+    right: 0;
+  }
+  .nav-close,
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .home .container .intro {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .about-content,
   .about-img {
     flex: 0 0 100%;
@@ -1135,15 +1284,181 @@ canvas {
     margin-bottom: var(--m-2-5);
   }
   .portfolio-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .model-item {
     flex: 0 0 50%;
     max-width: 50%;
   }
-}
-@media only screen and (max-width: 968px) {
-}
-@media only screen and (max-width: 768px) {
+  .video-item {
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .video-item .inner {
+    background: var(--color-white);
+    overflow: hidden;
+    transform: translateY(0);
+    transition: 0.2s;
+    height: 320px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+  .skeleton {
+    opacity: 0.7;
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+
+  .skeleton-text {
+    width: 100%;
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .skeleton-text:last-child {
+    margin-bottom: 0;
+    width: 80%;
+  }
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 70%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+  .video-item .inner:hover {
+    transform: translateY(-0.98rem);
+  }
+
+  .video-item .thumbnail {
+    position: relative;
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+  .video-item .thumbnail .image {
+    position: absolute;
+    top: -14%;
+    transform: scale(1);
+    transition: 0.3s;
+    height: 250px;
+    width: 100%;
+    clip: rect(30px, 500px, 220px, 0px);
+  }
+  .videos-header img {
+    width: 450px;
+    height: 450px;
+  }
+  .contant {
+    padding-top: 3rem;
+    max-height: 100vh;
+  }
+  .footer {
+    padding: 20px 0;
+    width: 100%;
+  }
+  .footer.fixed {
+    position: relative;
+  }
+  .customize-theme .card {
+    width: 75vw;
+  }
 }
 @media only screen and (max-width: 576px) {
+  .home .container .intro {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .about-content,
+  .about-img,
+  .contact-data,
+  .contact-form {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .about-img {
+    text-align: center;
+    margin-bottom: var(--m-2-5);
+  }
+  .portfolio-item,
+  .model-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .skills {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: var(--m-1-5);
+  }
+  .skill-item {
+    margin-top: 1rem;
+  }
+  .portfolio-item,
+  .model-item {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .video-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .videos .container {
+    padding-bottom: 0px;
+    max-width: 380px;
+  }
+  .videos-header img {
+    width: 320px;
+    height: 320px;
+    margin-bottom: 1rem;
+  }
+  .videos-header span {
+    text-align: center;
+  }
+  .footer {
+    padding: 20px 0;
+    width: 100%;
+  }
+  .customize-theme .card {
+    width: 96vw;
+    padding: 1rem;
+  }
 }
+
 @media only screen and (max-width: 320px) {
+  .skills {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: var(--m-1-5);
+    text-align: center;
+  }
+  .skill-item {
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .skill-item h4 {
+    text-align: center;
+  }
+  .portfolio-filter button {
+    flex: 0 0 50%;
+    max-width: 0 0 50%;
+  }
+  .videos-header span {
+    text-align: center;
+  }
+  .videos-header img {
+    width: 250px;
+    height: 250px;
+    margin-bottom: 2rem;
+  }
 }
