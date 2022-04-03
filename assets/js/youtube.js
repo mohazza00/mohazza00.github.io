@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded", () => {
 function getVideos() {
   fetch(
     `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCaGeZ0wvXqtBeDmxiUnXCtw&maxResults=${maxResults}&order=date&key=${API_KEY}&type=video&pageToken=${nextPageToken}`
-      
   )
     .then((response) => {
       if (!response.ok) {
@@ -33,7 +32,7 @@ function getVideos() {
       resultsPerPage = data.pageInfo.resultsPerPage;
       totalPages = Math.ceil(totalResults / resultsPerPage);
       console.log(totalPages);
-      applyPagination();
+      setupPagination();
       displayVideos(videos);
     });
 }
@@ -67,6 +66,4 @@ function displayVideos(videos) {
   videoContainer.innerHTML = videoTemplate;
 }
 
-function setupPagination(){
-
-}
+function setupPagination() {}
