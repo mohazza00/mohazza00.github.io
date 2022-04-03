@@ -831,6 +831,22 @@ canvas {
   position: absolute;
   bottom: 0.6rem;
 }
+.pagination{
+  text-align: center;
+}
+.pagination .pageBtn{
+  padding: 1rem;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border: none;
+  cursor: pointer;
+  font-weight: var(--font-semi-bold);
+  transition: 0.2s;
+}
+.pagination .pageBtn:hover{
+  background-color: var(--color-primary);
+  color: var(--color-white)
+}
 /*========== Contact ==========*/
 .contant {
   padding-top: 8rem;
@@ -1125,7 +1141,7 @@ canvas {
 .credit-item {
   margin-bottom: 1rem;
 }
-.credit-name .link {
+.link {
   color: var(--color-primary);
 }
 /*========== Media Queries ==========*/
@@ -1135,20 +1151,31 @@ canvas {
   }
 }
 @media only screen and (max-width: 968px) {
+
+
   .home .container .intro {
-    padding-top: 1rem;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .about-content {
     margin-left: 0px;
+  }
+  .about-content,
+  .about-img {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   .about-img {
     text-align: center;
     margin-bottom: var(--m-2-5);
   }
   .skills {
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
+    flex: 0 0 25%;
+    max-width: 25%;
   }
   .portfolio-item {
     flex: 0 0 50%;
@@ -1222,6 +1249,10 @@ canvas {
     width: 100%;
     clip: rect(30px, 500px, 220px, 0px);
   }
+  
+  .footer.fixed {
+    position: relative;
+  }
   .customize-theme .card {
     width: 58vw;
   }
@@ -1230,6 +1261,9 @@ canvas {
   body {
     margin: var(--header-height) 0 0 0;
   }
+  /* .nav{
+    height: var(--header-height);
+  } */
   .container {
     max-width: 568px;
   }
@@ -1282,6 +1316,11 @@ canvas {
   .about-img {
     text-align: center;
     margin-bottom: var(--m-2-5);
+  }
+  .skills {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: var(--m-1-5);
   }
   .portfolio-item {
     flex: 0 0 100%;
@@ -1423,6 +1462,10 @@ canvas {
   }
   .videos-header span {
     text-align: center;
+  }
+  .screenshot{
+    flex: 0 0 100%;
+    max-width: 100%;
   }
   .footer {
     padding: 20px 0;
