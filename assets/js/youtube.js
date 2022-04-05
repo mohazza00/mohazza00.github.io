@@ -2,6 +2,11 @@
 const videoContainer = document.querySelector(".video-list");
 const pagination = document.querySelector(".pagination");
 
+const pagesContainer = document.getElementById("pagesContainer");
+const prevPageBtn = document.getElementById("prevPageBtn");
+const nextPageBtn = document.getElementById("nextPageBtn");
+let pagesBtns;
+
 const API_KEY = "AIzaSyA9XfI_9DKEfDi5e2Yk9asBcRfB0llnWEY";
 const maxResults = 6;
 let totalResults = 0;
@@ -9,14 +14,45 @@ let resultsPerPage;
 let nextPageToken = "";
 let prevPageToken = "";
 let totalPages = 0;
+let currentPage = 0;
 //load items
 window.addEventListener("DOMContentLoaded", () => {
-  getVideos();
+  initializeVideos();
 });
 
-function getVideos() {
+prevPageBtn.addEventListener("click", () => {
+  if (currentPage <= 1) return;
+  currentPage--;
+  fetchVideos(prevPageToken);
+});
+
+nextPageBtn.addEventListener("click", () => {
+  if (currentPage >= 2) return;
+  currentPage++;
+  fetchVideos(nextPageToken);
+});
+
+function fetchVideos(pageToken) {
   fetch(
-    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCaGeZ0wvXqtBeDmxiUnXCtw&maxResults=${maxResults}&order=date&key=${API_KEY}&type=video&pageToken=${nextPageToken}`
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCaGeZ0wvXqtBeDmxiUnXCtw&maxResults=${maxResults}&order=date&key=${API_KEY}&type=video&pageToken=${pageToken}`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("ERROR");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      let videos = data.items;
+      nextPageToken = data.nextPageToken;
+      prevPageToken = data.prevPageToken;
+      displayVideos(videos);
+    });
+}
+
+function initializeVideos() {
+  fetch(
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCaGeZ0wvXqtBeDmxiUnXCtw&maxResults=${maxResults}&order=date&key=${API_KEY}&type=video`
   )
     .then((response) => {
       if (!response.ok) {
@@ -32,12 +68,16 @@ function getVideos() {
       resultsPerPage = data.pageInfo.resultsPerPage;
       totalPages = Math.ceil(totalResults / resultsPerPage);
       console.log(totalPages);
+      currentPage = 1;
       setupPagination();
       displayVideos(videos);
     });
 }
-
 function displayVideos(videos) {
+  pagesBtns.forEach((element) => {
+    element.classList.remove("active");
+  });
+  pagesBtns[currentPage - 1].classList.add("active");
   let videoTemplate = videos.map((video) => {
     let date = video.snippet.publishTime.split("T");
     let dateAr = date[0].split("-");
@@ -66,4 +106,15 @@ function displayVideos(videos) {
   videoContainer.innerHTML = videoTemplate;
 }
 
-function setupPagination() {}
+function setupPagination() {
+  for (i = 0; i < totalPages; i++) {
+    let html = `<button class="pageBtn" id="prevPageBtn">${i + 1}</button>`;
+    const placeholder = document.createElement("div");
+    placeholder.innerHTML = html;
+    const element = placeholder.firstElementChild;
+    pagesContainer.append(element);
+  }
+  pagesBtns = pagesContainer.querySelectorAll("button");
+  console.log(pagesBtns);
+  pagesBtns[currentPage - 1].classList.add("active");
+}

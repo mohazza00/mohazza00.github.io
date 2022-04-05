@@ -831,10 +831,10 @@ canvas {
   position: absolute;
   bottom: 0.6rem;
 }
-.pagination{
+.pagination {
   text-align: center;
 }
-.pagination .pageBtn{
+.pagination .pageBtn {
   padding: 1rem;
   background-color: var(--color-light);
   color: var(--color-dark);
@@ -843,14 +843,24 @@ canvas {
   font-weight: var(--font-semi-bold);
   transition: 0.2s;
 }
-.pagination .pageBtn:hover{
+.pagination .pageBtn:hover {
   background-color: var(--color-primary);
-  color: var(--color-white)
+  color: var(--color-white);
+}
+.pages {
+  display: inline-block;
+}
+.pages .pageBtn:not(:last-child) {
+  margin-right: 0.25rem;
+}
+.pages .pageBtn.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 /*========== Contact ==========*/
 .contant {
   padding-top: 8rem;
-  min-height: 100vh;
+  min-height: 100%;
 }
 .contact-box {
   flex: 0 0 40%;
@@ -1151,8 +1161,6 @@ canvas {
   }
 }
 @media only screen and (max-width: 968px) {
-
-
   .home .container .intro {
     flex: 0 0 100%;
     max-width: 100%;
@@ -1249,7 +1257,7 @@ canvas {
     width: 100%;
     clip: rect(30px, 500px, 220px, 0px);
   }
-  
+
   .footer.fixed {
     position: relative;
   }
@@ -1463,7 +1471,7 @@ canvas {
   .videos-header span {
     text-align: center;
   }
-  .screenshot{
+  .screenshot {
     flex: 0 0 100%;
     max-width: 100%;
   }
