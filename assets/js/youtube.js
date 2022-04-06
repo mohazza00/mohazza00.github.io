@@ -5,7 +5,7 @@ const pagination = document.querySelector(".pagination");
 const pagesContainer = document.getElementById("pagesContainer");
 const prevPageBtn = document.getElementById("prevPageBtn");
 const nextPageBtn = document.getElementById("nextPageBtn");
-let pagesBtns;
+let pagesBtns = [];
 
 const API_KEY = "AIzaSyA9XfI_9DKEfDi5e2Yk9asBcRfB0llnWEY";
 const maxResults = 6;
@@ -15,6 +15,8 @@ let nextPageToken = "";
 let prevPageToken = "";
 let totalPages = 0;
 let currentPage = 0;
+let allVideos = [];
+
 //load items
 window.addEventListener("DOMContentLoaded", () => {
   initializeVideos();
@@ -23,32 +25,14 @@ window.addEventListener("DOMContentLoaded", () => {
 prevPageBtn.addEventListener("click", () => {
   if (currentPage <= 1) return;
   currentPage--;
-  fetchVideos(prevPageToken);
+  displayPageVideos(allVideos, currentPage);
 });
 
 nextPageBtn.addEventListener("click", () => {
   if (currentPage >= 2) return;
   currentPage++;
-  fetchVideos(nextPageToken);
+  displayPageVideos(allVideos, currentPage);
 });
-
-function fetchVideos(pageToken) {
-  fetch(
-    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCaGeZ0wvXqtBeDmxiUnXCtw&maxResults=${maxResults}&order=date&key=${API_KEY}&type=video&pageToken=${pageToken}`
-  )
-    .then((response) => {
-      if (!response.ok) {
-        throw Error("ERROR");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      let videos = data.items;
-      nextPageToken = data.nextPageToken;
-      prevPageToken = data.prevPageToken;
-      displayVideos(videos);
-    });
-}
 
 function initializeVideos() {
   fetch(
@@ -70,9 +54,53 @@ function initializeVideos() {
       console.log(totalPages);
       currentPage = 1;
       setupPagination();
-      displayVideos(videos);
     });
 }
+
+function setupPagination() {
+  for (i = 0; i < totalPages; i++) {
+    let html = `<button class="pageBtn" id="prevPageBtn">${i + 1}</button>`;
+    const placeholder = document.createElement("div");
+    placeholder.innerHTML = html;
+    const element = placeholder.firstElementChild;
+    pagesContainer.append(element);
+  }
+  pagesBtns = pagesContainer.querySelectorAll("button");
+  console.log(pagesBtns);
+  pagesBtns[0].classList.add("active");
+
+  fetch(
+    `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCaGeZ0wvXqtBeDmxiUnXCtw&maxResults=${totalResults}&order=date&key=${API_KEY}&type=video`
+  )
+    .then((response) => {
+      if (!response.ok) {
+        throw Error("ERROR");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      allVideos = data.items;
+      console.log(allVideos);
+      displayPageVideos(allVideos, currentPage);
+    });
+
+  pagesBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      currentPage = btn.innerHTML;
+      displayPageVideos(allVideos, currentPage);
+    });
+  });
+}
+
+function displayPageVideos(videos, page) {
+  page--;
+  let start = resultsPerPage * page;
+  let end = start + resultsPerPage;
+  let paginatedItems = videos.slice(start, end);
+  console.log(paginatedItems);
+  displayVideos(paginatedItems);
+}
+
 function displayVideos(videos) {
   pagesBtns.forEach((element) => {
     element.classList.remove("active");
@@ -106,15 +134,21 @@ function displayVideos(videos) {
   videoContainer.innerHTML = videoTemplate;
 }
 
-function setupPagination() {
-  for (i = 0; i < totalPages; i++) {
-    let html = `<button class="pageBtn" id="prevPageBtn">${i + 1}</button>`;
-    const placeholder = document.createElement("div");
-    placeholder.innerHTML = html;
-    const element = placeholder.firstElementChild;
-    pagesContainer.append(element);
-  }
-  pagesBtns = pagesContainer.querySelectorAll("button");
-  console.log(pagesBtns);
-  pagesBtns[currentPage - 1].classList.add("active");
-}
+/*------- fetcing videos using the page token -------*/
+// function fetchVideos(pageToken) {
+//   fetch(
+//     `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=UCaGeZ0wvXqtBeDmxiUnXCtw&maxResults=${maxResults}&order=date&key=${API_KEY}&type=video&pageToken=${pageToken}`
+//   )
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw Error("ERROR");
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       let videos = data.items;
+//       nextPageToken = data.nextPageToken;
+//       prevPageToken = data.prevPageToken;
+//       displayVideos(videos);
+//     });
+// }
