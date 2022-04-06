@@ -137,6 +137,10 @@ p {
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.padd-top {
+  padding-top: 10px;
+}
 .card {
   background: var(--color-light);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
@@ -603,6 +607,12 @@ canvas {
   max-width: 50%;
   margin-bottom: var(--m-1-5);
 }
+
+.desktop-item {
+  flex: 0 0 100%;
+  max-width: 100%;
+  margin-bottom: var(--m-1-5);
+}
 .project.show {
   animation: showItem 0.5s ease;
 }
@@ -637,6 +647,17 @@ canvas {
 }
 .portfolio-item .mask {
   background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: 0.2s;
+  opacity: 0;
+  cursor: pointer;
+}
+.desktop-item .mask {
+  background: rgba(0, 0, 0, 0);
   position: absolute;
   left: 0;
   top: 0;
