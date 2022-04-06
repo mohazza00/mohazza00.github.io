@@ -145,6 +145,8 @@ p {
 
 /*========== Buttons ==========*/
 .btn {
+  outline: none;
+  cursor: pointer;
   padding: 0.75rem 2rem;
   line-height: 1;
   border-radius: var(--border-radius);
@@ -1258,9 +1260,10 @@ canvas {
     clip: rect(30px, 500px, 220px, 0px);
   }
 
-  .footer.fixed {
+  .footer.fixed :not(.contact-thanks) {
     position: relative;
   }
+
   .customize-theme .card {
     width: 58vw;
   }
@@ -1407,8 +1410,11 @@ canvas {
     padding: 20px 0;
     width: 100%;
   }
-  .footer.fixed {
+  .footer.fixed :not(.contact-thanks) {
     position: relative;
+  }
+  .footer.fixed.contact-thanks {
+    position: fixed;
   }
   .customize-theme .card {
     width: 75vw;
