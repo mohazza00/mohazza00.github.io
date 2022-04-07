@@ -1,4 +1,3 @@
-
 /*=============== PORTFOLIO ITEM FILTER ===============*/
 const filterContainer = document.querySelector(".portfolio-filter-inner");
 const filterBtns = filterContainer.children;
@@ -10,76 +9,63 @@ const modelLoader = document.querySelector(".model-loader");
 const footer = document.querySelector(".footer");
 
 let canvasInitialized = false;
-console.log(tabs)
+console.log(tabs);
 
-for(let i=0; i<totalFilterBtns; i++)
-{
-    filterBtns[i].addEventListener("click", function(){
-        const filterValue = this.getAttribute("data-filter");
-        console.log(filterValue)
-        filterContainer.querySelector(".active").classList.remove("active")
-        this.classList.add("active");
-        tabs.forEach((tab) => {
-            tab.classList.remove("active");
-        })
-        tabs[i].classList.add("active")
-        for(let j=0; j<portfolioItems.length; j++)
-        {
-            if(filterValue == portfolioItems[j].getAttribute("data-category"))
-            {
-                portfolioItems[j].classList.add("show");
-            }
-        }
-        if(filterValue == "desktop" || filterValue == "web"){
-          footer.classList.add("fixed");
-        }
-        else{
-          footer.classList.remove("fixed");
-        }
+for (let i = 0; i < totalFilterBtns; i++) {
+  filterBtns[i].addEventListener("click", function () {
+    const filterValue = this.getAttribute("data-filter");
+    console.log(filterValue);
+    filterContainer.querySelector(".active").classList.remove("active");
+    this.classList.add("active");
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+    });
+    tabs[i].classList.add("active");
+    for (let j = 0; j < portfolioItems.length; j++) {
+      if (filterValue == portfolioItems[j].getAttribute("data-category")) {
+        portfolioItems[j].classList.add("show");
+      }
+    }
+    if (filterValue == "desktop" || filterValue == "web") {
+      footer.classList.add("fixed");
+    } else {
+      footer.classList.remove("fixed");
+    }
 
-        if(i == 2){
-            canvasInitialized = true;
-            container.classList.add("active")
-            init(0)
-        }
-        else{
-            container.classList.remove("active")
-            if (container.firstChild)
-              container.removeChild(container.firstChild);
-
-        }
-
-     
-        
-    })
+    if (i == 2) {
+      canvasInitialized = true;
+      container.classList.add("active");
+      init(0);
+    } else {
+      container.classList.remove("active");
+      if (container.firstChild) container.removeChild(container.firstChild);
+    }
+  });
 }
-
 
 // 3D models
 const modelsContainer = document.querySelectorAll(".model-item");
-for(let k=0; k < modelsContainer.length; k++)
-{
-  modelsContainer[k].addEventListener("click", function() {
-    if(k > models.length -1)
-      return;
+for (let k = 0; k < modelsContainer.length; k++) {
+  modelsContainer[k].addEventListener("click", function () {
+    if (k > models.length - 1) return;
     container.removeChild(container.firstChild);
-    loadModel(k)
-  })
+    loadModel(k);
+  });
 }
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js";
 
 let models = [
   "./3D/models/MegaMan_Texture.gltf",
-  "./3D/models/GoldenWheelSpider_Unity.gltf"
-]
+  "./3D/models/GoldenWheelSpider_Unity.gltf",
+];
 
 var RESOURCES_LOADED = false;
 
 function init() {
-    let camera;
-    let renderer;
-    let scene;
-    let model;
+  let camera;
+  let renderer;
+  let scene;
+  let model;
   //Create scene
   scene = new THREE.Scene();
 
@@ -123,7 +109,6 @@ function init() {
 
   //   controls.enablePan = false;
 
-  
   animate();
 
   function animate() {
@@ -151,82 +136,82 @@ function setMaterialsOnGLTF(object3D) {
 }
 
 function loadModel(index) {
-  modelLoader.style.display = 'grid';
+  modelLoader.style.display = "grid";
   RESOURCES_LOADED = false;
   let camera;
   let renderer;
   let scene;
   let model;
-//Create scene
-scene = new THREE.Scene();
+  //Create scene
+  scene = new THREE.Scene();
 
-const fov = 35;
-const aspect = container.clientWidth / container.clientHeight;
-const near = 0.1;
-const far = 1000;
+  const fov = 35;
+  const aspect = container.clientWidth / container.clientHeight;
+  const near = 0.1;
+  const far = 1000;
 
-//Camera setup
-camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.set(-7, 5, 8);
-camera.lookAt(0, 0, 0);
+  //Camera setup
+  camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+  camera.position.set(-7, 5, 8);
+  camera.lookAt(0, 0, 0);
 
-//Lights
-const ambient = new THREE.AmbientLight(0x404040, 1);
-scene.add(ambient);
+  //Lights
+  const ambient = new THREE.AmbientLight(0x404040, 1);
+  scene.add(ambient);
 
-const light = new THREE.DirectionalLight(0xffffff, 1.1);
-light.position.set(10, 10, 400);
-scene.add(light);
+  const light = new THREE.DirectionalLight(0xffffff, 1.1);
+  light.position.set(10, 10, 400);
+  scene.add(light);
 
-//Helpers
-const size = 10;
-const divisions = 10;
+  //Helpers
+  const size = 10;
+  const divisions = 10;
 
-const gridHelper = new THREE.GridHelper(size, divisions);
-scene.add(gridHelper);
+  const gridHelper = new THREE.GridHelper(size, divisions);
+  scene.add(gridHelper);
 
-//Renderer
-renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setSize(container.clientWidth, container.clientHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+  //Renderer
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
 
-container.appendChild(renderer.domElement);
+  container.appendChild(renderer.domElement);
 
-//controls
-let controls = new OrbitControls(camera, renderer.domElement);
-controls.target.set(0, 2.5, 0);
-controls.enableDamping = true;
-controls.dampingFactor = 0.1;
+  //controls
+  let controls = new OrbitControls(camera, renderer.domElement);
+  controls.target.set(0, 2.5, 0);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.1;
 
-//   controls.enablePan = false;
+  //   controls.enablePan = false;
 
-const loadingManager = new THREE.LoadingManager();
+  const loadingManager = new THREE.LoadingManager();
 
-loadingManager.onProgress = function(item, loaded, total){
- // console.log(item, loaded, total);
-}
+  loadingManager.onProgress = function (item, loaded, total) {
+    // console.log(item, loaded, total);
+  };
 
-loadingManager.onLoad = function(){
-  modelLoader.style.display = 'none';
+  loadingManager.onLoad = function () {
+    modelLoader.style.display = "none";
 
-  RESOURCES_LOADED = true;
-}
-//Load model
-let loader = new THREE.GLTFLoader(loadingManager);
-loader.load(models[index], function (gltf) {
-  scene.add(gltf.scene);
-  model = gltf.scene.children[0];
-  setMaterialsOnGLTF(gltf.scene);
-});
-animate();
+    RESOURCES_LOADED = true;
+  };
+  //Load model
+  let loader = new THREE.GLTFLoader(loadingManager);
+  loader.load(models[index], function (gltf) {
+    scene.add(gltf.scene);
+    model = gltf.scene.children[0];
+    setMaterialsOnGLTF(gltf.scene);
+  });
+  animate();
 
-function animate() {
-  controls.update();
-  //model.rotation.y += 0;
-  renderer.render(scene, camera);
+  function animate() {
+    controls.update();
+    //model.rotation.y += 0;
+    renderer.render(scene, camera);
 
-  requestAnimationFrame(animate);
-}
+    requestAnimationFrame(animate);
+  }
 }
 
 /*=============== CAROUSEL ===============*/
@@ -240,31 +225,27 @@ let scrollAmount = 0;
 moveLeft.addEventListener("click", sliderScrollLeft);
 moveRight.addEventListener("click", sliderScrollRight);
 
-function sliderScrollLeft(){
+function sliderScrollLeft() {
   let scrollPerClick = modelImg.clientWidth;
-  console.log(scrollPerClick)
+  console.log(scrollPerClick);
   sliders.scrollTo({
     top: 0,
     left: (scrollAmount -= scrollPerClick),
-    behavior: "smooth"
+    behavior: "smooth",
   });
 
-  if(scrollAmount < 0){
+  if (scrollAmount < 0) {
     scrollAmount = 0;
   }
 }
 
-function sliderScrollRight(){
+function sliderScrollRight() {
   let scrollPerClick = modelImg.clientWidth;
-  if(scrollAmount <= sliders.scrollWidth - sliders.clientWidth){
+  if (scrollAmount <= sliders.scrollWidth - sliders.clientWidth - 10) {
     sliders.scrollTo({
       top: 0,
       left: (scrollAmount += scrollPerClick),
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 }
-
-
-
-
