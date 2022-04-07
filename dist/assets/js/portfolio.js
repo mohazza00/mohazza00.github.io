@@ -229,6 +229,41 @@ function animate() {
 }
 }
 
+/*=============== CAROUSEL ===============*/
+const sliders = document.querySelector(".carousel-box");
+const modelImg = document.querySelector(".model-item");
+const moveLeft = document.querySelector(".moveLeft");
+const moveRight = document.querySelector(".moveRight");
+
+let scrollAmount = 0;
+
+moveLeft.addEventListener("click", sliderScrollLeft);
+moveRight.addEventListener("click", sliderScrollRight);
+
+function sliderScrollLeft(){
+  let scrollPerClick = modelImg.clientWidth;
+  console.log(scrollPerClick)
+  sliders.scrollTo({
+    top: 0,
+    left: (scrollAmount -= scrollPerClick),
+    behavior: "smooth"
+  });
+
+  if(scrollAmount < 0){
+    scrollAmount = 0;
+  }
+}
+
+function sliderScrollRight(){
+  let scrollPerClick = modelImg.clientWidth;
+  if(scrollAmount <= sliders.scrollWidth - sliders.clientWidth){
+    sliders.scrollTo({
+      top: 0,
+      left: (scrollAmount += scrollPerClick),
+      behavior: "smooth"
+    });
+  }
+}
 
 
 

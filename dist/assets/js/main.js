@@ -281,3 +281,8 @@ bg2.addEventListener("click", () => {
     JSON.stringify(selectedBackground)
   );
 });
+
+
+
+
+
