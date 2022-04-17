@@ -141,25 +141,191 @@
                 effects.
               </p>
             </div>
+
+            <div class="game-section-title">
+              <h2>Tasks & Challenges</h2>
+            </div>
+            <div class="task">
+              <h3 class="task-title">Switching Lights</h3>
+              <p>
+                The first challenge I faced in this project was the light
+                switching system. For that I used the 2D Lights package for URP.
+                By using global lights and adjusting their intensity, I was able
+                to imitate switching lights on and off.
+              </p>
+              <p>
+                To add a sense of urgency to the game, we made it so the lights
+                will go out after a short period of time. To turn the lights
+                back on the player can use one of the switches in the level.
+                Each switch can be used only 3 times (has 3 energy levels as we
+                called them), and Each time you use the same switch the lights
+                get weaker and stays on for a shorter period of time.
+              </p>
+              <p>
+                To store the data for each energy level of the switches I used
+                scriptableObjects.
+              </p>
+              <div class="row">
+                <div class="task-img">
+                  <a
+                    href="../assets/img/lightIsSafe/lights.gif"
+                    target="_blank"
+                  >
+                    <img src="/dist/assets/img/lightIsSafe/lights.gif" alt="" />
+                  </a>
+                </div>
+                <div class="task-img">
+                  <a
+                    href="../assets/img/lightIsSafe/lightsData.png"
+                    target="_blank"
+                  >
+                    <img
+                      src="/dist/assets/img/lightIsSafe/lightsData.png"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="row scripts">
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Light-Is-Safe/blob/main/Assets/Scripts/Managers/Game%20Manager/LightsManager.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >LightsManager.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Light-Is-Safe/blob/main/Assets/Scripts/Environment/LightSwitch.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >LightSwitch.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Light-Is-Safe/blob/main/Assets/Scripts/ScriptableObjects/LightSwitchData.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >LightSwitchData.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="task">
+              <h3 class="task-title">Lock box</h3>
+              <p>
+                In level 3, we wanted to change the pace of the game by having a
+                special level. Instead of delivering objects to certain places
+                to eventually get the key, in this level the key is inside a
+                lock box that has a 3-digit password. each digit represents the
+                quantity of a specific object in the level (e.g. the quantity of
+                armchairs). So, the player will have to go around and count the
+                required objects and figure out the password to open the lock
+                box.
+              </p>
+              <p>
+                To add to the replayability of the game, I built a system to
+                randomize the objects used for the password, their amount and
+                their locations in each run of the game. This keeps the level
+                challenging and fresh every time.
+              </p>
+              <div class="row">
+                <div class="task-img">
+                  <a
+                    href="../assets/img/lightIsSafe/lockBox.gif"
+                    target="_blank"
+                  >
+                    <img
+                      src="/dist/assets/img/lightIsSafe/lockBox.gif"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div class="task-img">
+                  <a
+                    href="../assets/img/lightIsSafe/lockBoxRandomization.png"
+                    target="_blank"
+                  >
+                    <img
+                      src="/dist/assets/img/lightIsSafe/lockBoxRandomization.png"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="row scripts">
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Light-Is-Safe/blob/main/Assets/Scripts/Managers/LockBoxManager.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >LockBoxManager.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Light-Is-Safe/blob/main/Assets/Scripts/Environment/LockBox.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >LockBox.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Light-Is-Safe/blob/main/Assets/Scripts/ScriptableObjects/LockBoxObjectData.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >LockBoxObjectData.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
             <div class="game-section-title">
               <h2>Where To Find Light Is Safe?</h2>
             </div>
-            <a
-              class="link"
-              href="https://mt-pad.itch.io/light-is-safe"
-              target="_blank"
-              ><h3>Play and Download it on itch.io</h3></a
-            >
-            <!-- <iframe
-              class="padd"
+
+            <iframe
               frameborder="0"
-              src="https://itch.io/embed/1420182"
-              width="552"
+              src="https://itch.io/embed/1420182?linkback=true&amp;dark=true"
+              width="208"
               height="167"
               ><a href="https://mt-pad.itch.io/light-is-safe"
                 >Light Is Safe by MT-Pad Dev</a
               ></iframe
-            > -->
+            >
+
+            <div class="game-section-title">
+              <h2>GitHub Repository</h2>
+            </div>
+            <a
+              class="link"
+              href="https://github.com/mohazza00/Light-Is-Safe"
+              target="_blank"
+              ><h3>
+                Click here to access the project's GitHub repository
+                <i class="lni lni-github-original"></i></h3
+            ></a>
 
             <div class="game-section-title">
               <h2>Screenshots</h2>
@@ -198,6 +364,11 @@
               <div class="screenshot">
                 <a href="../assets/img/lightIsSafe/7.png" target="_blank">
                   <img src="../assets/img/lightIsSafe/7.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/lightIsSafe/8.png" target="_blank">
+                  <img src="../assets/img/lightIsSafe/8.png" alt="" />
                 </a>
               </div>
             </div>
