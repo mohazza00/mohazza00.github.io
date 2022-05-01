@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--=============== LINE ICONS ===============-->
+    <link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css" />
+    <link rel="icon" href="/assets/img/Logo_Goggles_Start_3.png" />
+    <!--=============== SWIPER CSS ===============-->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <title>Mohazza</title>
+  </head>
+  <body>
+    <!--=============== LOADER ===============-->
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
+
+    <!--=============== HEADER ===============-->
+    <header class="header" id="header">
+      <!-- nav -->
+      <nav class="nav container padd-15">
+        <!-- nav logo -->
+        <a href="../index.html" class="nav-logo">
+          <h2>Mohazza</h2>
+        </a>
+        <!-- nav menu -->
+        <div class="nav-menu" id="nav-menu">
+          <!-- nav list -->
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="../index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="../portfolio.html" class="nav-link active-link"
+                >Portfolio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="../videos.html" class="nav-link">YouTube</a>
+            </li>
+            <li class="nav-item">
+              <a href="../contact.html" class="nav-link">Contact</a>
+            </li>
+          </ul>
+          <!-- nav close -->
+          <div class="nav-close" id="nav-close">
+            <i class="lni lni-close"></i>
+          </div>
+        </div>
+        <!-- nav btns-->
+        <div class="nav-btns">
+          <!-- theme change btn -->
+          <i class="lni lni-pallet change-theme" id="theme-button"></i>
+          <!-- toggle btn -->
+          <div class="nav-toggle" id="nav-toggle">
+            <i class="lni lni-grid-alt"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--=============== MAIN ===============-->
+    <main class="main-content">
+      <!--=============== Videos ===============-->
+      <section class="videos section" id="videos">
+        <div class="container">
+          <div class="game padd-15">
+            <!-- game title -->
+            <div class="game-title row">
+              <div class="game-cover">
+                <img src="../assets/img/colorsseum/cover.png" alt="" />
+              </div>
+              <p class="info"><span>Developer: </span> MT-Pad Dev</p>
+              <p class="info">
+                <span>Platform: </span>Windows <i class="lni lni-windows"></i>
+              </p>
+              <p class="info"><span>Build: </span> Unity & C#</p>
+              <p class="date">August 2021</p>
+            </div>
+            <h1>Colorsseum</h1>
+            <div class="game-description">
+              <p>
+                Light is Safe is a 2D top-down shooter game created for the
+                Brackeys game jam 2021.2 in one week. Your goal is clear all the
+                enemy waves. Each enemy has a specific color. To kill the
+                enemies you have to shoot them with arrows that match their
+                colors. Shooting enemies with the wrong color will make them
+                stronger and more difficult to defeat.
+              </p>
+              <p>
+                After clearing each wave, you will pick an item (power-up) from
+                a list of random items. This allows you collect new combinations
+                of items in each run. These items will eventually help you
+                defeat the final boss!
+              </p>
+              <div class="game-gif">
+                <img src="../assets/img/colorsseum/showcase.gif" alt="" />
+              </div>
+            </div>
+
+            <div class="game-section-title">
+              <h2>Background and Development</h2>
+            </div>
+            <div class="credit-name">
+              <p>
+                The theme for this game jam was "Let There Be Chaos". So, at
+                first we wanted to make a bullet hell game, but we knew that
+                everyone else would go with the same idea. So, we came up with
+                the twist of using colors. Shooting enemies with the wrong color
+                will make them stronger causing more chaos.
+              </p>
+              <p>
+                The development team consisted of 3 people: me as the programmer
+                and designer, and 2 artists.
+              </p>
+            </div>
+
+            <div class="game-section-title">
+              <h2>My Contributions</h2>
+            </div>
+            <div class="credit-name">
+              <p>- I designed and programmed all the gameplay mechanics.</p>
+              <p>
+                - I designed the AI for the different enemy types and
+                implemented it.
+              </p>
+              <p>- I designed the power-ups and implemented them.</p>
+              <p>
+                - Project management: managing and assigning tasks to other team
+                members and setting deadlines.
+              </p>
+              <p>- Importing and integrating the art assets.</p>
+            </div>
+
+            <div class="game-section-title">
+              <h2>Tasks & Challenges</h2>
+            </div>
+            <div class="task">
+              <h3 class="task-title">Wave Spawner</h3>
+              <p>
+                The first challenge I faced in this project was the wave
+                spawning system. When the wave starts, the 4 gates of the
+                colorsseum open and enemies start entering onto the arena. When
+                spawning an enemy, we first select a random unit color and
+                assign them a random gate to be spawned there. After that, they
+                move onto the arena and stops at one of the random starting
+                points (points prevoiusly specified on the arena). Once all the
+                enemies of the wave are on the arena, the gates close and the
+                battle starts.
+              </p>
+              <p>
+                Besides the main waves, there are minions waves that start when
+                the boss changes his phase.
+              </p>
+
+              <div class="row tasks">
+                <div class="task-img-full">
+                  <a
+                    href="../assets/img/colorsseum/waveSpawner.gif"
+                    target="_blank"
+                  >
+                    <img
+                      src="../assets/img/colorsseum/waveSpawner.gif"
+                      alt=""
+                    />
+                  </a>
+                </div>
+              </div>
+              <div class="row scripts">
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Managers/WavesSpawner.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >WaveSpawner.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Enemies/Enemy.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >Enemy.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Managers/GameManager.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >GameManager.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="task">
+              <h3 class="task-title">Interactive Tutorial</h3>
+              <p>
+                Since teaching the game mechanics to the players is really
+                important, we needed a tutorial. Instead of explaining the rules
+                of the game with bricks of boring texts, I decided to make an
+                interactive tutorial. This interactive tutorial will give the
+                players some instructions on how to play and then wait for them
+                until they perform the necessary actions before moving on to the
+                next set of instructions. This way we can make sure the players
+                know the rules of the game before playing it.
+              </p>
+              <p>
+                For this tutorial system I created two special classes for the
+                player and a dummy enemy.
+              </p>
+              <div class="row tasks">
+                <div class="task-img-full">
+                  <a
+                    href="../assets/img/colorsseum//tutorial.gif"
+                    target="_blank"
+                  >
+                    <img src="../assets/img/colorsseum//tutorial.gif" alt="" />
+                  </a>
+                </div>
+              </div>
+              <div class="row scripts">
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Tutorial/TutorialManager.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >TutorialManager.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Tutorial/PlayerTutorial.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >PlayerTutorial.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Tutorial/ShootingTutorial.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >ShootingTutorial.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="task">
+              <h3 class="task-title">Items & Power-ups</h3>
+              <p>
+                One of the most important elements in the game is the power-ups
+                the player get after clearing each wave. When clearing a wave, a
+                small shop will appear in the middle of the arena with 3 random
+                items. The player can pick any of the 3 items before moving on
+                to the next wave. In each run the player can collect up to 4
+                items before facing the final boss.
+              </p>
+              <p>
+                By randomizing the items that appear in the shop in each run,
+                the player can build different combinations of power-ups and mix
+                their abilities in unique ways.
+              </p>
+              <div class="row tasks">
+                <div class="task-img-full">
+                  <a href="../assets/img/colorsseum/shop.png" target="_blank">
+                    <img src="../assets/img/colorsseum/shop.png" alt="" />
+                  </a>
+                </div>
+              </div>
+
+              <p>A list of the items I designed:</p>
+              <div class="row tasks">
+                <div class="task-img-full">
+                  <a href="../assets/img/colorsseum/Items.png" target="_blank">
+                    <img src="../assets/img/colorsseum/Items.png" alt="" />
+                  </a>
+                </div>
+              </div>
+
+              <div class="row scripts">
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Environment/Market.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >Market.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Environment/Item.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >Item.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+                <div class="script">
+                  <a
+                    href="https://github.com/mohazza00/Colorsseum/blob/main/Assets/Scripts/Player/Skills.cs"
+                    target="_blank"
+                    class="btn btn-script"
+                    >Skills.cs
+                    <span class="icon"
+                      ><i class="lni lni-github-original"></i
+                    ></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="game-section-title">
+              <h2>Where To Find Light Is Safe?</h2>
+            </div>
+
+            <iframe
+              frameborder="0"
+              src="https://itch.io/embed/1176594"
+              width="208"
+              height="167"
+              ><a href="https://mt-pad.itch.io/colorsseum"
+                >Colorsseum by MT-Pad Dev</a
+              ></iframe
+            >
+            <div class="game-section-title">
+              <h2>GitHub Repository</h2>
+            </div>
+            <a
+              class="link"
+              href="https://github.com/mohazza00/Colorsseum"
+              target="_blank"
+              ><h3>
+                Click here to access the project's GitHub repository
+                <i class="lni lni-github-original"></i></h3
+            ></a>
+
+            <div class="game-section-title">
+              <h2>Screenshots</h2>
+            </div>
+            <div class="screenshots row">
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/1.png" target="_blank">
+                  <img src="../assets/img/colorsseum/1.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/2.png" target="_blank">
+                  <img src="../assets/img/colorsseum/2.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/3.png" target="_blank">
+                  <img src="../assets/img/colorsseum/3.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/4.png" target="_blank">
+                  <img src="../assets/img/colorsseum/4.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/5.png" target="_blank">
+                  <img src="../assets/img/colorsseum/5.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/6.png" target="_blank">
+                  <img src="../assets/img/colorsseum/6.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/7.png" target="_blank">
+                  <img src="../assets/img/colorsseum/7.png" alt="" />
+                </a>
+              </div>
+              <div class="screenshot">
+                <a href="../assets/img/colorsseum/8.png" target="_blank">
+                  <img src="../assets/img/colorsseum/8.png" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--=============== Footer ===============-->
+      <footer class="footer">
+        <div class="container">
+          <div class="footer-text padd-15">
+            <p>&copy; Developed by Mohazza | 2022</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <!--=============== Theme Customize ===============-->
+    <div class="customize-theme">
+      <div class="card">
+        <h2>Customize your view</h2>
+        <p>Modify the font size, color and background</p>
+        <!-- font size -->
+        <div class="font-size">
+          <h3>Font Size</h3>
+          <div>
+            <h6>Aa</h6>
+            <div class="select-size">
+              <span class="font-size-1"></span>
+              <span class="font-size-2"></span>
+              <span class="font-size-3 active"></span>
+              <span class="font-size-4"></span>
+            </div>
+            <h3>Aa</h3>
+          </div>
+        </div>
+        <!-- color -->
+        <div class="color">
+          <h3>Color</h3>
+          <div class="select-color">
+            <span class="color-1"></span>
+            <span class="color-2"></span>
+            <span class="color-3 active"></span>
+            <span class="color-4"></span>
+            <span class="color-5"></span>
+          </div>
+        </div>
+        <!-- background -->
+        <div class="background">
+          <h3>Background</h3>
+          <div class="select-bg">
+            <div class="bg-1 active">
+              <span></span>
+              <h5 for="bg-1">Light</h5>
+            </div>
+            <div class="bg-2">
+              <span></span>
+              <h5 for="bg-3">Dark</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--=============== SWIPER JS ===============-->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!--=============== JS ===============-->
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
