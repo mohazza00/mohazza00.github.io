@@ -57,6 +57,13 @@ import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.121.1/exampl
 let models = [
   "./3D/models/MegaMan_Texture.gltf",
   "./3D/models/GoldenWheelSpider_Unity.gltf",
+  "./3D/models/Gomamon_Texture.gltf",
+];
+
+let textures = [
+  "./3D/models/MegaMan_Texture.gltf",
+  "./3D/models/GoldenWheelSpider_Unity.gltf",
+  "./3D/models/Gamomon.png",
 ];
 
 var RESOURCES_LOADED = false;
@@ -196,12 +203,25 @@ function loadModel(index) {
 
     RESOURCES_LOADED = true;
   };
+
+  const outlineMaterial = new THREE.MeshToonMaterial({ color: "black" });
   //Load model
   let loader = new THREE.GLTFLoader(loadingManager);
+  let textureLoader = new THREE.TextureLoader();
   loader.load(models[index], function (gltf) {
+    setMaterialsOnGLTF(gltf.scene);
+    if(index == 2)
+    {
+      gltf.scene.traverse((child) => {
+        console.log(child);
+        if (child.name == "Cube001_1") {
+          child.material = outlineMaterial;
+        }
+      });
+    }
+  
     scene.add(gltf.scene);
     model = gltf.scene.children[0];
-    setMaterialsOnGLTF(gltf.scene);
   });
   animate();
 
