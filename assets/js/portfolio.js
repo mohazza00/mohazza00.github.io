@@ -58,12 +58,14 @@ let models = [
   "./3D/models/MegaMan_Texture.gltf",
   "./3D/models/GoldenWheelSpider_Unity.gltf",
   "./3D/models/Gomamon_Texture.gltf",
+  "./3D/models/Tentomon_Texture.gltf",
 ];
 
 let textures = [
   "./3D/models/MegaMan_Texture.gltf",
   "./3D/models/GoldenWheelSpider_Unity.gltf",
   "./3D/models/Gamomon.png",
+  "./3D/models/Tentomon.png",
 ];
 
 var RESOURCES_LOADED = false;
@@ -210,7 +212,7 @@ function loadModel(index) {
   let textureLoader = new THREE.TextureLoader();
   loader.load(models[index], function (gltf) {
     setMaterialsOnGLTF(gltf.scene);
-    if(index == 2)
+    if(index == 2 || index == 3)
     {
       gltf.scene.traverse((child) => {
         console.log(child);
